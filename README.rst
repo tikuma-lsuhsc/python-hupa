@@ -41,18 +41,15 @@ Use
   # to get a copy of the full database as a Pandas dataframe
   df = db.query()
 
-  # to get age, gender, and mean GRBAS grade scores
-  df = db.query(["Age", "Gender"], include_grbas='grade')
+  # to get age, gender, and R scores
+  df = db.query(["edad", "sexo", "R"])
 
-  # to get a dataframe of WAV files and start and ending timestamps of all /a/ segment
-  df = db.get_files('/a/')
+  # to get a dataframe of all the WAV files with pathology code
+  df = db.get_files(auxdata_fields=['Codido'])
 
-  # to iterate over '/a/' acoustic data of female participants along with
-  # age and mean GRBAS scores
-  for id, fs, x, auxdata in db.iter_data('/a/',
-                                      auxdata_fields=["Age"],
-                                      include_grbas=True,
-                                      Gender="Female"):
+  # to iterate acoustic data over all female speakers along with age and G score
+  for id, fs, x, auxdata in db.iter_data(auxdata_fields=["edad","G"],
+                                         sexo="M"):
     # run the acoustic data through your analysis function, get measurements
     params = my_analysis_function(fs, x)
 
