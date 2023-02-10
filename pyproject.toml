@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools >= 61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hupa-voicedb"
+description = "Príncipe de Asturias Hospital Voice Disorders Database Reader module"
+readme = "README.rst"
+keywords = ["multimedia"]
+license = { text = "GPL-2.0 License" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["version"]
+requires-python = ">=3.8"
+dependencies = ["pandas", "numpy", "xlrd"]
+
+[project.urls]
+Repository = "https://github.com/tikuma-lsuhsc/python-hupa-voicedb/issues"
+Issues = "https://github.com/tikuma-lsuhsc/python-hupa-voicedb/issues"
+Pull_Requests = "https://github.com/tikuma-lsuhsc/python-hupa-voicedb/pulls"
+
+[tool.setuptools.dynamic]
+version = { attr = "hupa.__version__" }
