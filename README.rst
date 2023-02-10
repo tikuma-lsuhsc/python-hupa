@@ -18,8 +18,9 @@
 This Python module provides functions to retrieve data and information easily from 
 Príncipe de Asturias Hospital Voice Disorders Database.
 
-This module is not the database itself. User must contact Dr. Juan Ignacio Godino Llorente at
-Universidad Politécnica de Madrid to obtain the license and to download the database.
+**This module does not contain the database itself.** The database belongs to Prof. Juan I. 
+Godino-Llorente at Universidad Politécnica de Madrid, and he kindly makes it available for free to 
+non-commercial research use. Users must contact him to obtain the license and to download the database.
 
 Install
 -------
