@@ -259,5 +259,5 @@ class HUPA:
 
         return framerate, x
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str) -> Tuple[int, np.array]:
         return self.read_data(key)
