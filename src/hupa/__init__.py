@@ -81,8 +81,9 @@ class HUPA:
         df1.loc[df1["Archivo"] == "Mpda.nsp.wav", "Archivo"] = "Mpda.wav"  # fix
 
         df1["Fs"] = df1["Fs"].apply(lambda v: {"25 kHz": 25000}[v])
-        df1.index = df1["Archivo"].str.split(".", n=1, expand=True)[0].rename("ID")
         df1["Archivo"] = df1["Archivo"].str.lower()  # files are all in lower case
+        df1.index = df1["Archivo"].str.split(".", n=1, expand=True)[0].rename("ID")
+
 
         df2 = (
             pd.read_excel(

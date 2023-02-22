@@ -27,5 +27,5 @@ def test_iter_data(hupa):
 
 
 def test_read_data(hupa):
-    id = "Jcfa"
+    id = "jcfa"
     hupa.read_data(id)  # full data file
