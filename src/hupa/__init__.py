@@ -142,6 +142,36 @@ class HUPA:
         * sexo (gender)
         * Codigo (pathology code, normophonic if '0')
 
+        Any column of the database's Excel spreadsheet can be specified (in Spanish, case sensitive):
+
+        --------------  ----------  --------------------------------------------
+        Name (Spanish)  In English  Description
+        --------------  ----------  --------------------------------------------
+        Archivo         File name   Wav file name
+        Fs              Fs          Sampling rate (samples/second)
+        Tipo            Type        Audio channel configuration
+        EGG             EGG         True if EGG data
+        edad            Age         Age
+        sexo            Gender      H-Male, M-Female
+        G               G           Grade score (GRBAS 4-pt scale)
+        R               R           Roughness score (GRBAS 4-pt scale)
+        B               B           Breathiness score (GRBAS 4-pt scale)
+        A               A           Asthenia score (GRBAS 4-pt scale)
+        S               S           Strain score (GRBAS 4-pt scale)
+        Total           Total       Sum of all GRBAS scores
+        Codigo          Code        Pathology code ('0' if normal)
+        Patología       Pathology   Pathology name (in Spanish)
+        F0              F0          Fundamental frequency (Hz), incomplete
+        F1              F1          First formant frequency (Hz), incomplete
+        F2              F2          Second formant frequency (Hz), incomplete
+        F3              F3          Third formant frequency (Hz), incomplete
+        Formantes       Formants    'Bien','Regular','Mal','Sin calcular'
+        Picos           Peaks       'Bien','Regular','Mal','Sin calcular'
+        Jitter          Jitter      'Bien','Regular','Mal','Sin calcular'
+        Comentarios     Comments
+        --------------  ----------  --------------------------------------------
+
+
         Valid `filters` keyword argument values
         ---------------------------------------
 
