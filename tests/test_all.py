@@ -29,3 +29,13 @@ def test_iter_data(hupa):
 def test_read_data(hupa):
     id = "jcfa"
     hupa.read_data(id)  # full data file
+
+    # to get age, gender, and R scores
+    df = hupa.query(["edad", "sexo", "R", "Codigo"])
+
+    # use Pandas' itertuples to read audio data iteratively
+    for id, *info in df.itertuples():
+        try:
+            fs, x = hupa.read_data(id) # normalize to [0,1] unless given additional argument: normlize=False
+        except:
+            id

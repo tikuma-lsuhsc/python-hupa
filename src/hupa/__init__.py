@@ -82,8 +82,25 @@ class HUPA:
 
         df1["Fs"] = df1["Fs"].apply(lambda v: {"25 kHz": 25000}[v])
         df1["Archivo"] = df1["Archivo"].str.lower()  # files are all in lower case
-        df1.index = df1["Archivo"].str.split(".", n=1, expand=True)[0].rename("ID")
+        df1["ID"] = df1["Archivo"].str.split(".", n=1, expand=True)[0]  # to be index
 
+        # differentiate ids if duplicated
+        def re_id(df):
+            if len(df) > 1:
+                df = df.sort_values("Codigo")  # make sure to have normal file first
+                # just in case
+                tf = df1["ID"].str.fullmatch(df.iloc[0, -1] + r"\d+")
+                if tf.any():
+                    raise NotImplementedError(
+                        "there are existing ID's matches the intended new ID's for the duplicate entries."
+                    )
+                df["ID"] = [f"{id}{i}" for i, id in enumerate(df["ID"])]
+            return df
+
+        df1 = df1.groupby("Archivo", group_keys=False).apply(re_id)
+
+        #
+        df1 = df1.set_index("ID").sort_index()
 
         df2 = (
             pd.read_excel(
