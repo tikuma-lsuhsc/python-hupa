@@ -96,6 +96,11 @@ class HUPA:
         self._df_dx = df2
         self._dir = dbdir
 
+    @property
+    def pathologies(self) -> pd.DataFrame:
+        """Pathology code look-up table"""
+        return self._df_dx.copy()
+
     def query(
         self,
         columns: Sequence[str] = None,

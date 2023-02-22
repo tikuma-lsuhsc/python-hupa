@@ -40,7 +40,10 @@ Use
   db = HUPA('<path to the root directory of the extracted database>')
 
   # to get a copy of the full database as a Pandas dataframe
-  df = db.query()
+
+  # to get the patholgy code-name lookup table 
+  # (note: not all pathologies are included in the database)
+  lut = db.pathologies
 
   # to get age, gender, and R scores
   df = db.query(["edad", "sexo", "R"])
