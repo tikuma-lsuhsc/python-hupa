@@ -18,7 +18,7 @@ def test_query(hupa):
 
 def test_files(hupa):
     print(hupa.get_files())
-    print(hupa.get_files(["edad", "Codido", "R"], sexo="male"))
+    print(hupa.get_files(["edad", "Codigo", "R"], sexo="H"))
 
 
 def test_iter_data(hupa):
