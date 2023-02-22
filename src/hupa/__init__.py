@@ -177,8 +177,8 @@ class HUPA:
         # return only the selected columns
         try:
             df = df[columns]
-        except:
-            ValueError(
+        except KeyError:
+            raise ValueError(
                 f'At least one label in the "columns" argument is invalid: {columns}'
             )
 
