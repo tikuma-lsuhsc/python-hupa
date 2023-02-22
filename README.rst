@@ -12,9 +12,6 @@
 .. |license| image:: https://img.shields.io/github/license/tikuma-lsuhsc/python-hupa-voicedb
   :alt: GitHub
 
-.. note::
-   This Python package is still under development.
-
 This Python module provides functions to retrieve data and information easily from 
 Príncipe de Asturias Hospital Voice Disorders Database.
 
