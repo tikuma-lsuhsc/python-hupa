@@ -1,5 +1,5 @@
 `hupa-voicedb`: Príncipe de Asturias Hospital Voice Disorders Database Reader module
-==========================================================================
+====================================================================================
 
 |pypi| |status| |pyver| |license|
 
