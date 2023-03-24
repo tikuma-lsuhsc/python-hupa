@@ -80,6 +80,8 @@ class HUPA:
 
         df1.loc[df1["Archivo"] == "Mpda.nsp.wav", "Archivo"] = "Mpda.wav"  # fix
 
+        df1['sexo'] = df1['sexo'].str.strip() # fix extraneous whitespace
+
         df1["Fs"] = df1["Fs"].apply(lambda v: {"25 kHz": 25000}[v])
         df1["Archivo"] = df1["Archivo"].str.lower()  # files are all in lower case
         df1["ID"] = df1["Archivo"].str.split(".", n=1, expand=True)[0]  # to be index

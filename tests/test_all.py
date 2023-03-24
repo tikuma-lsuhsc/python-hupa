@@ -11,6 +11,7 @@ from os import path
 def test_query(hupa):
     df = hupa.query()
     print(df)
+    assert df['sexo'].isin(['M','H']).all()
 
     df = hupa.query(edad=[50, 70])
     print(df)
