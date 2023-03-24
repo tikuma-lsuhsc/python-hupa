@@ -12,7 +12,7 @@ from os import path
 import numpy as np
 import wave
 from collections.abc import Iterator, Sequence
-from typing import Tuple, Optional, List, Union
+from typing import Tuple, Optional, Literal
 
 
 class HUPA:
@@ -216,11 +216,14 @@ class HUPA:
 
     def get_files(
         self,
+        task: Literal["a"] = "a",
         auxdata_fields: Sequence[str] = None,
         **filters,
     ) -> pd.DataFrame:
         """get WAV filepaths, and starting and ending time markers
 
+        :param task: recorded vocal task, defaults to 'a' (unused dummy argment)
+        :type task: 'a'
         :param auxdata_fields: names of auxiliary data fields to return, defaults to None
         :type auxdata_fields: Sequence[str], optional
         :param **filters: query conditions (values) for specific per-database columns (keys)
@@ -251,12 +254,15 @@ class HUPA:
 
     def iter_data(
         self,
+        task: Literal["a"] = "a",
         auxdata_fields: Sequence[str] = None,
         normalize: bool = True,
         **filters,
     ) -> Iterator[Tuple[int, np.array, Optional[pd.Series]]]:
         """iterate over data samples
 
+        :param task: recorded vocal task, defaults to 'a' (unused dummy argment)
+        :type task: 'a'
         :param auxdata_fields: names of auxiliary data fields to return, defaults to None
         :type auxdata_fields: sequence of str, optional
         :param normalize: True to return normalized f64 data, False to return i16 data, defaults to True
@@ -279,11 +285,15 @@ class HUPA:
             data = self._read_file(file, normalize)
             yield (id, *data) if aux_data.empty else (id, *data, aux_data.loc[id])
 
-    def read_data(self, id: str, normalize: bool = True) -> Tuple[int, np.array]:
+    def read_data(
+        self, id: str, task: Literal["a"] = "a", normalize: bool = True
+    ) -> Tuple[int, np.array]:
         """read audio data of the specified recording
 
         :param id: recording identifier, as returned by query()
         :type id: str
+        :param task: recorded vocal task, defaults to 'a' (unused dummy argment)
+        :type task: 'a'
         :param normalize: True to normalize the int16 data between (-1,1), defaults to True
         :type normalize: bool, optional
         :return: a pair of the sampling rate and numpy array
